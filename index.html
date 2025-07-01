@@ -1,1 +1,480 @@
-<h1>Hello from my blog</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Writing - Mercy Nekesa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: #000;
+            color: #fff;
+        }
+
+        body {
+            background: #fdfdfd;
+            font-family: 'Crimson Text', serif;
+            line-height: 1.65;
+            color: #1a1a1a;
+        }
+
+        .document-container {
+            max-width: 65ch;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.03),
+                0 2px 4px rgba(0, 0, 0, 0.02),
+                0 8px 24px rgba(0, 0, 0, 0.05);
+            border-radius: 0;
+        }
+
+        .page-header {
+            font-family: 'Inter', sans-serif;
+            border-bottom: 1px solid #e8e8e8;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .serif-heading {
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .sans-heading {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .body-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #2a2a2a;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: #e8e8e8;
+            margin: 48px 0;
+        }
+
+        .link-underline {
+            background-image: linear-gradient(transparent, transparent 5px, #000 5px, #000);
+            background-position: bottom;
+            background-size: 100% 6px;
+            background-repeat: repeat-x;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .link-underline:hover {
+            background-image: linear-gradient(transparent, transparent 4px, #666 4px, #666);
+        }
+
+        .document-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .article-preview {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 32px 0;
+            transition: all 0.2s ease;
+        }
+
+        .article-preview:hover {
+            background: #fafafa;
+            margin: 0 -24px;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .article-preview:last-child {
+            border-bottom: none;
+        }
+
+        .article-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .article-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #000;
+        }
+
+        .article-excerpt {
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .page-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 100;
+            background: #000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .page-toggle:hover {
+            background: #333;
+        }
+
+        .article-content {
+            display: none;
+        }
+
+        .article-content.active {
+            display: block;
+        }
+
+        .blog-index.active {
+            display: block;
+        }
+
+        .blog-index {
+            display: block;
+        }
+
+        .paragraph-indent {
+            text-indent: 1.5em;
+        }
+
+        .dropcap::first-letter {
+            font-size: 4em;
+            line-height: 1;
+            float: left;
+            margin: 0.1em 0.1em 0 0;
+            font-weight: 600;
+        }
+
+        blockquote {
+            border-left: 2px solid #e8e8e8;
+            padding-left: 24px;
+            margin: 32px 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        .back-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#" class="page-toggle" onclick="toggleView()">View Article</a>
+
+    <div class="document-container min-h-screen">
+        <!-- Blog Index -->
+        <div id="blog-index" class="blog-index">
+            <!-- Document Header -->
+            <header class="page-header sticky top-0 z-50 px-12 py-8">
+                <div class="flex justify-between items-baseline">
+                    <div class="sans-heading text-lg tracking-tight">
+                        <a href="#" class="link-underline">MN</a>
+                    </div>
+                    <div class="sans-heading text-sm">Writing</div>
+                </div>
+            </header>
+
+            <!-- Blog Content -->
+            <main class="px-12 py-16">
+                <section class="mb-16">
+                    <h1 class="serif-heading text-4xl font-light mb-8 tracking-tight">Writing</h1>
+                    <p class="body-text text-gray-600 mb-12">Thoughts on building technology.</p>
+                </section>
+
+                <!-- Articles (will be populated by JavaScript) -->
+                <section id="articles-list">
+                    <!-- Dynamic content goes here -->
+                </section>
+            </main>
+        </div>
+
+        <!-- Article Content -->
+        <div id="article-content" class="article-content">
+            <!-- Document Header -->
+            <header class="page-header sticky top-0 z-50 px-12 py-8">
+                <div class="flex justify-between items-baseline">
+                    <div class="sans-heading text-lg tracking-tight">
+                        <a href="#" class="link-underline">MN</a>
+                    </div>
+                    <div class="document-meta">Writing</div>
+                </div>
+            </header>
+
+            <!-- Article Content (will be populated by JavaScript) -->
+            <main class="px-12 py-16" id="article-main">
+                <!-- Dynamic content goes here -->
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="px-12 py-8 border-t border-gray-200">
+            <p class="document-meta">© 2025. Made with intention.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Blog posts metadata - each post references a text file
+        const blogPosts = [
+            {
+                id: 'customer-payment-validation',
+                title: 'How much have customers paid you?',
+                date: 'July 1, 2025',
+                readTime: '12 min read',
+                excerpt: 'When customers haven\'t paid yet, you\'re building based on assumptions. Here\'s why testing payment willingness early changes everything about how you scope your MVP.',
+                filename: 'blogOne.txt' // Just reference the text file
+            }
+            // Add more posts here:
+            // {
+            //     id: 'another-post',
+            //     title: 'Another Great Post',
+            //     date: 'January 20, 2025',
+            //     readTime: '8 min read',
+            //     excerpt: 'This is another post...',
+            //     filename: 'blogTwo.txt'
+            // }
+        ];
+
+        let loadedPosts = {}; // Cache for loaded content
+        let currentPostId = null;
+
+        // Load blog content from text file
+        async function loadBlogContent(filename) {
+            if (loadedPosts[filename]) {
+                return loadedPosts[filename]; // Return cached content
+            }
+
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const content = await response.text();
+                loadedPosts[filename] = content; // Cache it
+                return content;
+            } catch (error) {
+                console.error('Error loading blog content:', error);
+                return `Error loading content from ${filename}. Make sure the file exists in the same directory as your HTML file.`;
+            }
+        }
+
+        // Blog content parser - converts plain text to properly formatted HTML
+        function parseContent(rawContent) {
+            let content = rawContent.trim();
+            let isFirstParagraph = true;
+
+            // Split into lines and process
+            const lines = content.split('\n');
+            let html = '';
+            let inParagraph = false;
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+
+                // Skip empty lines
+                if (!line) {
+                    if (inParagraph) {
+                        html += '</p>\n';
+                        inParagraph = false;
+                    }
+                    continue;
+                }
+
+                // Headers
+                if (line.startsWith('## ')) {
+                    if (inParagraph) {
+                        html += '</p>\n';
+                        inParagraph = false;
+                    }
+                    html += '<div class="section-divider"></div>\n';
+                    html += `<h2 class="sans-heading text-2xl mb-6">${line.substring(3)}</h2>\n`;
+                    continue;
+                }
+
+                if (line.startsWith('# ')) {
+                    if (inParagraph) {
+                        html += '</p>\n';
+                        inParagraph = false;
+                    }
+                    // Skip main title as it's handled in the header
+                    continue;
+                }
+
+                // Regular paragraphs
+                if (!inParagraph) {
+                    if (isFirstParagraph) {
+                        html += `<p class="dropcap">`;
+                        isFirstParagraph = false;
+                    } else {
+                        html += `<p class="paragraph-indent">`;
+                    }
+                    inParagraph = true;
+                }
+
+                html += line + ' ';
+            }
+
+            // Close final paragraph if open
+            if (inParagraph) {
+                html += '</p>\n';
+            }
+
+            return html;
+        }
+
+
+        // Generate blog index
+        function generateBlogIndex() {
+            const articlesList = document.getElementById('articles-list');
+            articlesList.innerHTML = blogPosts.map(post => `
+                <article class="article-preview">
+                    <div class="article-meta">${post.date} • ${post.readTime}</div>
+                    <h2 class="article-title">
+                        <a href="#${post.id}" class="link-underline">${post.title}</a>
+                    </h2>
+                    <p class="article-excerpt">${post.excerpt}</p>
+                </article>
+            `).join('');
+        }
+
+        // Generate article content
+        async function generateArticleContent(post) {
+            const articleMain = document.getElementById('article-main');
+
+            // Show loading state
+            articleMain.innerHTML = `
+                <a href="#" onclick="showIndex()" class="back-link">← Back to Writing</a>
+                <div class="body-text">Loading...</div>
+            `;
+
+            // Load content from file
+            const rawContent = await loadBlogContent(post.filename);
+            const parsedContent = parseContent(rawContent);
+
+            articleMain.innerHTML = `
+                <a href="#" onclick="showIndex()" class="back-link">← Back to Writing</a>
+                
+                <article>
+                    <header class="mb-12">
+                        <div class="document-meta mb-4">${post.date} • ${post.readTime}</div>
+                        <h1 class="serif-heading text-4xl font-light mb-8 tracking-tight">${post.title}</h1>
+                    </header>
+
+                    <div class="body-text space-y-6">
+                        ${parsedContent}
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <footer class="body-text text-gray-600">
+                        <p>Building technology that enables non-tech founders to build their own solutions. <a href="https://linkedin.com/in/nekesamercy" class="link-underline">Let's connect</a>.</p>
+                    </footer>
+                </article>
+            `;
+        }
+
+        // Navigation functions
+        function showIndex() {
+            document.getElementById('blog-index').style.display = 'block';
+            document.getElementById('article-content').style.display = 'none';
+            document.querySelector('.page-toggle').textContent = 'View Article';
+            window.location.hash = '';
+            currentPostId = null;
+        }
+
+        function showArticle(postId = null) {
+            if (postId) {
+                currentPostId = postId;
+                const post = blogPosts.find(p => p.id === postId);
+                if (post) {
+                    generateArticleContent(post); // Now async
+                }
+            }
+
+            document.getElementById('blog-index').style.display = 'none';
+            document.getElementById('article-content').style.display = 'block';
+            document.querySelector('.page-toggle').textContent = 'View Index';
+        }
+
+        function toggleView() {
+            const index = document.getElementById('blog-index');
+            if (index.style.display === 'none') {
+                showIndex();
+            } else {
+                if (currentPostId) {
+                    showArticle(currentPostId);
+                } else {
+                    showArticle(blogPosts[0].id);
+                }
+            }
+        }
+
+        // Handle URL hash changes
+        function handleHashChange() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const post = blogPosts.find(p => p.id === hash);
+                if (post) {
+                    showArticle(hash);
+                    return;
+                }
+            }
+            showIndex();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            generateBlogIndex();
+            handleHashChange();
+        });
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', handleHashChange);
+    </script>
+</body>
+
+</html>
